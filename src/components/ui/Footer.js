@@ -116,7 +116,7 @@ export default function Footer(props) {
                 to="/mobileapps"
                 className={classes.link}
               >
-                iOS/Andrios App Development
+                iOS/Android App Development
               </Grid>
               <Grid
                 item
