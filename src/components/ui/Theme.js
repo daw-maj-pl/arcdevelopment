@@ -7,14 +7,14 @@ const arcGrey = '#868686';
 export default createTheme({
   palette: {
     common: {
-      blue: `${arcBlue}`,
-      orange: `${arcOrange}`
+      blue: arcBlue,
+      orange: arcOrange
     },
     primary: {
-      main: `${arcBlue}`
+      main: arcBlue
     },
     secondary: {
-      main: `${arcOrange}`
+      main: arcOrange
     }
   },
   typography: {
@@ -52,6 +52,11 @@ export default createTheme({
       fontSize: '1.25rem',
       fontWeight: 300,
       color: arcGrey
+    },
+    subtitle2: {
+      color: 'white',
+      fontSize: '1.25rem',
+      fontWeight: 300
     },
     learnButton: {
       borderColor: arcBlue,
