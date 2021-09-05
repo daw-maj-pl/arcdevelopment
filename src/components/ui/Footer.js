@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
 
-import footerAdorment from '../../assets/Footer Adornment.svg';
+import footerAdornment from '../../assets/Footer Adornment.svg';
 import facebook from '../../assets/facebook.svg';
 import twitter from '../../assets/twitter.svg';
 import instagram from '../../assets/instagram.svg';
@@ -128,7 +128,7 @@ export default function Footer(props) {
                 to="/websites"
                 className={classes.link}
               >
-                Website development
+                Website Development
               </Grid>
             </Grid>
           </Grid>
@@ -220,10 +220,15 @@ export default function Footer(props) {
       </Hidden>
       <img
         alt="black decorative slash"
-        src={footerAdorment}
+        src={footerAdornment}
         className={classes.adornment}
       />
-      <Grid container justifyContent="flex-end" spacing={2} className={classes.socialContainer}>
+      <Grid
+        container
+        justifyContent="flex-end"
+        spacing={2}
+        className={classes.socialContainer}
+      >
         <Grid
           item
           component={'a'}
