@@ -9,6 +9,9 @@ import Hidden from '@material-ui/core/Hidden';
 
 import forwardArrow from '../assets/forwardArrow.svg';
 import backArrow from '../assets/backArrow.svg';
+import swiss from '../assets/swissKnife.svg';
+import access from '../assets/extendAccess.svg';
+import engagement from '../assets/increaseEngagement.svg';
 
 import integrationAnimation from '../animations/integrationAnimation/data.json';
 
@@ -134,9 +137,9 @@ export default function MobileApps(props) {
           </Grid>
         </Grid>
         <Grid item md>
-          <Lottie options={defaultOptions} />
+          <Lottie options={defaultOptions} style={{ maxWidth: '20em' }} />
         </Grid>
-        <Grid item container direction="column" md align='right'>
+        <Grid item container direction="column" md align="right">
           <Grid item>
             <Typography variant="h4" gutterBottom>
               Simultaneous Platform Support
@@ -151,6 +154,42 @@ export default function MobileApps(props) {
               This significantly reduces costs and creates a more unified brand
               experience across all devices.
             </Typography>
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid item container direction="row" className={classes.rowContainer}>
+        <Grid item container direction="column" alignItems="center" md>
+          <Grid item>
+            <Typography align="center" variant="h4" gutterBottom>
+              Extend Functionality
+            </Typography>
+          </Grid>
+          <Grid item>
+            <img src={swiss} alt="swiss army knife" />
+          </Grid>
+        </Grid>
+        <Grid item container direction="column" alignItems="center" md>
+          <Grid item>
+            <Typography align="center" variant="h4" gutterBottom>
+              Extend Access
+            </Typography>
+          </Grid>
+          <Grid item>
+            <img
+              src={access}
+              alt="tear-one-off sign"
+              style={{ maxWidth: '25em' }}
+            />
+          </Grid>
+        </Grid>
+        <Grid item container direction="column" alignItems="center" md>
+          <Grid item>
+            <Typography align="center" variant="h4" gutterBottom>
+              Increase Engagement
+            </Typography>
+          </Grid>
+          <Grid item>
+            <img src={engagement} alt="app with notification" />
           </Grid>
         </Grid>
       </Grid>
