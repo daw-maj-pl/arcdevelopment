@@ -4,7 +4,8 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { useMediaQuery } from '@material-ui/core/useMediaQuery';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import Hidden from '@material-ui/core/Hidden';
 
 import backArrow from '../assets/backArrow.svg';
 import forwardArrow from '../assets/forwardArrow.svg';
@@ -35,6 +36,9 @@ const useStyles = makeStyles(theme => ({
 
 export default function CustomSoftware(props) {
   const classes = useStyles();
+  const theme = useTheme();
+  const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
+  const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
 
   const documentsOptions = {
     loop: true,
@@ -74,22 +78,35 @@ export default function CustomSoftware(props) {
 
   return (
     <Grid container direction="column" className={classes.mainContainer}>
-      <Grid item container direction="row">
+      <Grid
+        item
+        container
+        direction="row"
+        justifyContent={matchesMD ? 'center' : undefined}
+      >
+        <Hidden mdDown>
+          <Grid
+            item
+            className={classes.arrowContainer}
+            style={{ marginRight: '1em', marginLeft: '-3.5em' }}
+          >
+            <IconButton
+              style={{ backgroundColor: 'transparent' }}
+              component={Link}
+              to="/services"
+              onClick={() => props.setSelectedIndex(0)}
+            >
+              <img src={backArrow} alt="Back to Services Page" />
+            </IconButton>
+          </Grid>
+        </Hidden>
         <Grid
           item
-          className={classes.arrowContainer}
-          style={{ marginRight: '1em', marginLeft: '-3.5em' }}
+          container
+          direction="column"
+          className={classes.heading}
+          align={matchesMD ? 'center' : undefined}
         >
-          <IconButton
-            style={{ backgroundColor: 'transparent' }}
-            component={Link}
-            to="/services"
-            onClick={() => props.setSelectedIndex(0)}
-          >
-            <img src={backArrow} alt="Back to Services Page" />
-          </IconButton>
-        </Grid>
-        <Grid item container direction="column" className={classes.heading}>
           <Grid item>
             <Typography variant="h2">Custom Software Development</Typography>
           </Grid>
@@ -117,19 +134,21 @@ export default function CustomSoftware(props) {
             </Typography>
           </Grid>
         </Grid>
-        <Grid item className={classes.arrowContainer}>
-          <IconButton
-            style={{ backgroundColor: 'transparent' }}
-            component={Link}
-            to="/mobileapps"
-            onClick={() => props.setSelectedIndex(2)}
-          >
-            <img
-              src={forwardArrow}
-              alt="Forward to iOS/Android App Development Page"
-            />
-          </IconButton>
-        </Grid>
+        <Hidden mdDown>
+          <Grid item className={classes.arrowContainer}>
+            <IconButton
+              style={{ backgroundColor: 'transparent' }}
+              component={Link}
+              to="/mobileapps"
+              onClick={() => props.setSelectedIndex(2)}
+            >
+              <img
+                src={forwardArrow}
+                alt="Forward to iOS/Android App Development Page"
+              />
+            </IconButton>
+          </Grid>
+        </Hidden>
       </Grid>
       <Grid
         item
@@ -159,7 +178,7 @@ export default function CustomSoftware(props) {
           direction="column"
           md
           alignItems="center"
-          style={{ maxWidth: '40em' }}
+          style={{ maxWidth: '40em', margin: `${matchesSM ? '10em' : 0} 0` }}
         >
           <Grid item>
             <Typography variant="h4">Save Time</Typography>
@@ -184,8 +203,20 @@ export default function CustomSoftware(props) {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item container direction="row" justifyContent="space-between">
-        <Grid item container className={classes.itemContainer} md>
+      <Grid
+        item
+        container
+        alignItems={matchesMD ? 'center' : undefined}
+        direction={matchesMD ? 'column' : 'row'}
+        justifyContent="space-between"
+      >
+        <Grid
+          item
+          container
+          className={classes.itemContainer}
+          style={{ marginBottom: matchesMD ? '15em' : 0 }}
+          md
+        >
           <Grid item container direction="column" md>
             <Grid item>
               <Typography variant="h4">Digital Documents & Data</Typography>
@@ -236,7 +267,7 @@ export default function CustomSoftware(props) {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item container direction="row" style={{margin: '20em 0'}}>
+      <Grid item container direction="row" style={{ margin: '20em 0' }}>
         <Grid item container direction="column" alignItems="center">
           <Grid item>
             <img
@@ -261,8 +292,21 @@ export default function CustomSoftware(props) {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item container direction="row" justifyContent="space-between">
-        <Grid item container className={classes.itemContainer} md>
+      <Grid
+        item
+        container
+        alignItems={matchesMD ? 'center' : undefined}
+        direction={matchesMD ? 'column' : 'row'}
+        justifyContent="space-between"
+        style={{ marginBottom: '10em' }}
+      >
+        <Grid
+          item
+          container
+          className={classes.itemContainer}
+          style={{ marginBottom: matchesMD ? '15em' : 0 }}
+          md
+        >
           <Grid item container direction="column" md>
             <Grid item>
               <Typography variant="h4">Automation</Typography>
