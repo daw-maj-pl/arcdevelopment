@@ -15,6 +15,8 @@ import engagement from '../assets/increaseEngagement.svg';
 
 import integrationAnimation from '../animations/integrationAnimation/data.json';
 
+import CallToAction from './ui/CallToAction'
+
 const useStyles = makeStyles(theme => ({
   heading: {
     maxWidth: '40em'
@@ -35,6 +37,7 @@ export default function MobileApps(props) {
   const classes = useStyles();
   const theme = useTheme();
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
+  const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
   const matchesXS = useMediaQuery(theme.breakpoints.down('xs'));
 
   const defaultOptions = {
@@ -117,20 +120,38 @@ export default function MobileApps(props) {
           </Grid>
         </Hidden>
       </Grid>
-      <Grid item container direction="row" className={classes.rowContainer}>
+      <Grid
+        item
+        container
+        direction={matchesSM ? 'column' : 'row'}
+        style={{ margin: '15em 0' }}
+        className={classes.rowContainer}
+      >
         <Grid item container direction="column" md>
           <Grid item>
-            <Typography variant="h4" gutterBottom>
+            <Typography
+              align={matchesSM ? 'center' : undefined}
+              variant="h4"
+              gutterBottom
+            >
               Integration
             </Typography>
           </Grid>
           <Grid item>
-            <Typography variant="body1" paragraph>
+            <Typography
+              align={matchesSM ? 'center' : undefined}
+              variant="body1"
+              paragraph
+            >
               Our technology enables an innate interconnection between web and
               mobile applications, putting everything you need right in one
               convenient place.
             </Typography>
-            <Typography variant="body1" paragraph>
+            <Typography
+              align={matchesSM ? 'center' : undefined}
+              variant="body1"
+              paragraph
+            >
               This allows you to extend your reach, reinvent interactions, and
               develop a stronger relationship with your users than ever before.
             </Typography>
@@ -139,7 +160,13 @@ export default function MobileApps(props) {
         <Grid item md>
           <Lottie options={defaultOptions} style={{ maxWidth: '20em' }} />
         </Grid>
-        <Grid item container direction="column" md align="right">
+        <Grid
+          item
+          container
+          direction="column"
+          md
+          align={matchesSM ? 'center' : 'right'}
+        >
           <Grid item>
             <Typography variant="h4" gutterBottom>
               Simultaneous Platform Support
@@ -157,7 +184,13 @@ export default function MobileApps(props) {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item container direction="row" className={classes.rowContainer}>
+      <Grid
+        item
+        container
+        direction={matchesMD ? 'column' : 'row'}
+        className={classes.rowContainer}
+        style={{ marginBottom: '15em' }}
+      >
         <Grid item container direction="column" alignItems="center" md>
           <Grid item>
             <Typography align="center" variant="h4" gutterBottom>
@@ -168,7 +201,14 @@ export default function MobileApps(props) {
             <img src={swiss} alt="swiss army knife" />
           </Grid>
         </Grid>
-        <Grid item container direction="column" alignItems="center" md>
+        <Grid
+          item
+          container
+          direction="column"
+          alignItems="center"
+          md
+          style={{ margin: `${matchesMD ? '10em' : 0} 0` }}
+        >
           <Grid item>
             <Typography align="center" variant="h4" gutterBottom>
               Extend Access
@@ -178,7 +218,7 @@ export default function MobileApps(props) {
             <img
               src={access}
               alt="tear-one-off sign"
-              style={{ maxWidth: '25em' }}
+              style={{ maxWidth: matchesXS ? '20em' : '28em' }}
             />
           </Grid>
         </Grid>
@@ -192,6 +232,9 @@ export default function MobileApps(props) {
             <img src={engagement} alt="app with notification" />
           </Grid>
         </Grid>
+      </Grid>
+      <Grid item>
+        <CallToAction setValue={props.setValue} />
       </Grid>
     </Grid>
   );
