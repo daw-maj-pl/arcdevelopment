@@ -2,6 +2,7 @@ import Lottie from 'react-lottie';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import vision from '../assets/vision.svg';
 import consultation from '../assets/consultationIcon.svg';
@@ -27,6 +28,8 @@ const useStyles = makeStyles(theme => ({
 export default function Revolution() {
   const classes = useStyles();
   const theme = useTheme();
+  const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
+  const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
 
   const defaultOptions = {
     loop: true,
@@ -40,22 +43,31 @@ export default function Revolution() {
   return (
     <Grid container direction="column">
       <Grid item className={classes.rowContainer} style={{ marginTop: '2em' }}>
-        <Typography variant="h2" style={{ fontFamily: 'Pacifico' }}>
+        <Typography
+          align={matchesMD ? 'center' : undefined}
+          variant="h2"
+          style={{ fontFamily: 'Pacifico' }}
+        >
           The Revolution
         </Typography>
       </Grid>
       <Grid
         item
         container
-        direction="row"
+        direction={matchesMD ? 'column' : 'row'}
         alignItems="center"
         className={classes.rowContainer}
+        style={{ marginTop: '5em' }}
       >
         <Grid item lg>
           <img
             src={vision}
             alt="mountain through binoculars"
-            style={{ maxWidth: '40em', marginRight: '5em' }}
+            style={{
+              maxWidth: matchesSM ? 300 : '40em',
+              marginRight: matchesMD ? 0 : '5em',
+              marginBottom: matchesMD ? '5em' : 0
+            }}
           />
         </Grid>
         <Grid
@@ -64,7 +76,7 @@ export default function Revolution() {
           direction="column"
           lg
           style={{ maxWidth: '40em' }}
-          align="right"
+          align={matchesMD ? 'center' : 'right'}
         >
           <Grid item>
             <Typography variant="h4" gutterBottom>
@@ -107,9 +119,10 @@ export default function Revolution() {
       <Grid
         item
         container
-        direction="row"
+        direction={matchesMD ? 'column' : 'row'}
         alignItems="center"
         className={classes.rowContainer}
+        style={{ margin: '10em 0' }}
       >
         <Grid
           item
@@ -117,7 +130,7 @@ export default function Revolution() {
           direction="column"
           lg
           style={{ maxWidth: '40em' }}
-          align="right"
+          align={matchesMD ? 'center' : undefined}
         >
           <Grid item>
             <Typography variant="h4" gutterBottom>
@@ -167,7 +180,12 @@ export default function Revolution() {
             </Typography>
           </Grid>
         </Grid>
-        <Grid item container justifyContent="flex-end" lg>
+        <Grid
+          item
+          container
+          justifyContent={matchesMD ? 'center' : 'flex-end'}
+          lg
+        >
           <Lottie
             options={defaultOptions}
             style={{ maxWidth: '40em', margin: 0 }}
@@ -190,11 +208,17 @@ export default function Revolution() {
       <Grid
         item
         container
-        direction="row"
+        direction={matchesMD ? 'column' : 'row'}
         className={classes.rowContainer}
         style={{ backgroundColor: '#b3b3b3', height: '90em' }}
       >
-        <Grid item container direction="column" lg>
+        <Grid
+          item
+          container
+          direction="column"
+          lg
+          align={matchesMD ? 'center' : undefined}
+        >
           <Grid item>
             <Typography
               variant="h4"
@@ -238,17 +262,28 @@ export default function Revolution() {
           </Grid>
         </Grid>
         <Grid item lg style={{ alignSelf: 'center' }}>
-          <img src={consultation} alt="handshake" />
+          <img
+            src={consultation}
+            alt="handshake"
+            width="100%"
+            style={{ maxWidth: 700 }}
+          />
         </Grid>
       </Grid>
       <Grid
         item
         container
-        direction="row"
+        direction={matchesMD ? 'column' : 'row'}
         className={classes.rowContainer}
         style={{ backgroundColor: '#ff7373', height: '90em' }}
       >
-        <Grid item container direction="column" lg>
+        <Grid
+          item
+          container
+          direction="column"
+          lg
+          align={matchesMD ? 'center' : undefined}
+        >
           <Grid item>
             <Typography
               variant="h4"
@@ -289,17 +324,28 @@ export default function Revolution() {
           </Grid>
         </Grid>
         <Grid item lg style={{ alignSelf: 'center' }}>
-          <img src={mockup} alt="basic website design outline" />
+          <img
+            src={mockup}
+            style={{ maxWidth: 1000 }}
+            width="100%"
+            alt="basic website design outline"
+          />
         </Grid>
       </Grid>
       <Grid
         item
         container
-        direction="row"
+        direction={matchesMD ? 'column' : 'row'}
         className={classes.rowContainer}
         style={{ backgroundColor: '#39b54a', height: '90em' }}
       >
-        <Grid item container direction="column" lg>
+        <Grid
+          item
+          container
+          direction="column"
+          lg
+          align={matchesMD ? 'center' : undefined}
+        >
           <Grid item>
             <Typography
               variant="h4"
@@ -340,17 +386,23 @@ export default function Revolution() {
           </Grid>
         </Grid>
         <Grid item lg style={{ alignSelf: 'center' }}>
-          <img src={review} alt="magnifying glass" />
+          <img src={review} alt="magnifying glass" width="100%" />
         </Grid>
       </Grid>
       <Grid
         item
         container
-        direction="row"
+        direction={matchesMD ? 'column' : 'row'}
         className={classes.rowContainer}
         style={{ backgroundColor: '#a67c52', height: '90em' }}
       >
-        <Grid item container direction="column" lg>
+        <Grid
+          item
+          container
+          direction="column"
+          lg
+          align={matchesMD ? 'center' : undefined}
+        >
           <Grid item>
             <Typography
               variant="h4"
@@ -383,17 +435,28 @@ export default function Revolution() {
           </Grid>
         </Grid>
         <Grid item lg style={{ alignSelf: 'center' }}>
-          <img src={design} alt="paintbrush leaving stroke of paint" />
+          <img
+            src={design}
+            alt="paintbrush leaving stroke of paint"
+            width="100%"
+            style={{ maxWidth: 1000 }}
+          />
         </Grid>
       </Grid>
       <Grid
         item
         container
-        direction="row"
+        direction={matchesMD ? 'column' : 'row'}
         className={classes.rowContainer}
         style={{ backgroundColor: '#39b54a', height: '90em' }}
       >
-        <Grid item container direction="column" lg>
+        <Grid
+          item
+          container
+          direction="column"
+          lg
+          align={matchesMD ? 'center' : undefined}
+        >
           <Grid item>
             <Typography
               variant="h4"
@@ -425,17 +488,23 @@ export default function Revolution() {
           </Grid>
         </Grid>
         <Grid item lg style={{ alignSelf: 'center' }}>
-          <img src={review} alt="magnifying glass" />
+          <img src={review} alt="magnifying glass" width="100%" />
         </Grid>
       </Grid>
       <Grid
         item
         container
-        direction="row"
+        direction={matchesMD ? 'column' : 'row'}
         className={classes.rowContainer}
         style={{ backgroundColor: '#fbb03b', height: '90em' }}
       >
-        <Grid item container direction="column" lg>
+        <Grid
+          item
+          container
+          direction="column"
+          lg
+          align={matchesMD ? 'center' : undefined}
+        >
           <Grid item>
             <Typography
               variant="h4"
@@ -494,17 +563,28 @@ export default function Revolution() {
           </Grid>
         </Grid>
         <Grid item lg style={{ alignSelf: 'center' }}>
-          <img src={build} alt="building construction site" />
+          <img
+            src={build}
+            alt="building construction site"
+            width="100%"
+            style={{ maxWidth: matchesMD ? 700 : 1000 }}
+          />
         </Grid>
       </Grid>
       <Grid
         item
         container
-        direction="row"
+        direction={matchesMD ? 'column' : 'row'}
         className={classes.rowContainer}
         style={{ backgroundColor: '#c1272d', height: '90em' }}
       >
-        <Grid item container direction="column" lg>
+        <Grid
+          item
+          container
+          direction="column"
+          lg
+          align={matchesMD ? 'center' : undefined}
+        >
           <Grid item>
             <Typography
               variant="h4"
@@ -545,17 +625,28 @@ export default function Revolution() {
           </Grid>
         </Grid>
         <Grid item lg style={{ alignSelf: 'center' }}>
-          <img src={launch} alt="rocket" />
+          <img
+            src={launch}
+            alt="rocket"
+            style={{ maxWidth: 200 }}
+            width="100%"
+          />
         </Grid>
       </Grid>
       <Grid
         item
         container
-        direction="row"
+        direction={matchesMD ? 'column' : 'row'}
         className={classes.rowContainer}
         style={{ backgroundColor: '#8e45ce', height: '90em' }}
       >
-        <Grid item container direction="column" lg>
+        <Grid
+          item
+          container
+          direction="column"
+          lg
+          align={matchesMD ? 'center' : undefined}
+        >
           <Grid item>
             <Typography
               variant="h4"
@@ -595,17 +686,28 @@ export default function Revolution() {
           </Grid>
         </Grid>
         <Grid item lg style={{ alignSelf: 'center' }}>
-          <img src={maintain} alt="wrench tightening bolds" />
+          <img
+            src={maintain}
+            alt="wrench tightening bolds"
+            width="100%"
+            style={{ maxWidth: 500 }}
+          />
         </Grid>
       </Grid>
       <Grid
         item
         container
-        direction="row"
+        direction={matchesMD ? 'column' : 'row'}
         className={classes.rowContainer}
         style={{ backgroundColor: '#29abe2', height: '90em' }}
       >
-        <Grid item container direction="column" lg>
+        <Grid
+          item
+          container
+          direction="column"
+          lg
+          align={matchesMD ? 'center' : undefined}
+        >
           <Grid item>
             <Typography
               variant="h4"
@@ -647,7 +749,7 @@ export default function Revolution() {
           </Grid>
         </Grid>
         <Grid item lg style={{ alignSelf: 'center' }}>
-          <img src={iterate} alt="falling dominoes" />
+          <img src={iterate} alt="falling dominoes" width="100%" />
         </Grid>
       </Grid>
     </Grid>
