@@ -1,8 +1,11 @@
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import history from '../assets/history.svg';
+
+import CallToAction from './ui/CallToAction';
 
 const useStyles = makeStyles(theme => ({
   missionStatement: {
@@ -21,20 +24,28 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function About() {
+export default function About(props) {
   const classes = useStyles();
   const theme = useTheme();
+  const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
     <Grid container direction="column">
-      <Grid item className={classes.rowContainer} style={{ marginTop: '2em' }}>
-        <Typography variant="h2">About Us</Typography>
+      <Grid
+        item
+        className={classes.rowContainer}
+        style={{ marginTop: matchesMD ? '1em' : '2em' }}
+      >
+        <Typography align={matchesMD ? 'center' : undefined} variant="h2">
+          About Us
+        </Typography>
       </Grid>
       <Grid
         item
         container
         justifyContent="center"
         className={classes.rowContainer}
+        style={{ marginTop: '3em' }}
       >
         <Typography
           variant="h4"
@@ -52,6 +63,9 @@ export default function About() {
         item
         container
         className={classes.rowContainer}
+        style={{ marginTop: '10em', marginBottom: '10em' }}
+        direction={matchesMD ? 'column' : 'row'}
+        alignItems={matchesMD ? 'center' : undefined}
         justifyContent="space-around"
       >
         <Grid item>
@@ -61,6 +75,7 @@ export default function About() {
             direction="column"
             lg
             style={{ maxWidth: '35em' }}
+            align={matchesMD ? 'center' : undefined}
           >
             <Grid item>
               <Typography variant="h4" gutterBottom>
@@ -106,10 +121,13 @@ export default function About() {
             <img
               src={history}
               alt="quill pen sitting on top of book"
-              style={{ maxHeight: '22em' }}
+              style={{ maxHeight: matchesMD ? 200 : '22em' }}
             />
           </Grid>
         </Grid>
+      </Grid>
+      <Grid item>
+        <CallToAction setValue={props.setValue} />
       </Grid>
     </Grid>
   );
