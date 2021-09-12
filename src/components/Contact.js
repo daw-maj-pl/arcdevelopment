@@ -166,7 +166,12 @@ export default function Contact(props) {
                   variant="body1"
                   style={{ color: theme.palette.common.blue, fontSize: '1rem' }}
                 >
-                  123-456-789
+                  <a
+                    href="tel:123-456-789"
+                    style={{ textDecoration: 'none', color: 'inherit' }}
+                  >
+                    123-456-789
+                  </a>
                 </Typography>
               </Grid>
             </Grid>
@@ -183,7 +188,12 @@ export default function Contact(props) {
                   variant="body1"
                   style={{ color: theme.palette.common.blue, fontSize: '1rem' }}
                 >
-                  example@example.com
+                  <a
+                    href="mailto:example@example.com"
+                    style={{ textDecoration: 'none', color: 'inherit' }}
+                  >
+                    example@example.com
+                  </a>
                 </Typography>
               </Grid>
             </Grid>
@@ -243,7 +253,18 @@ export default function Contact(props) {
               justifyContent="center"
               style={{ marginTop: '2em' }}
             >
-              <Button variant="contained" className={classes.sendButton}>
+              <Button
+                disabled={
+                  name.length === 0 ||
+                  message.length === 0 ||
+                  email.length === 0 ||
+                  phone.length === 0 ||
+                  phoneHelper.length !== 0 ||
+                  emailHelper.length !== 0
+                }
+                variant="contained"
+                className={classes.sendButton}
+              >
                 Send Message{' '}
                 <img
                   src={airplane}
