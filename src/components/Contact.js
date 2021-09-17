@@ -245,6 +245,7 @@ export default function Contact(props) {
                 value={message}
                 className={classes.message}
                 multiline
+                placeholder="Tell us more about your project"
                 fullWidth
                 rows={10}
                 id="message"
