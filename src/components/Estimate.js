@@ -595,7 +595,7 @@ export default function Estimate() {
       .filter(question => question.length === 0);
 
     if (questions.length === 2) {
-      if (emptySelections === 1) {
+      if (emptySelections.length === 1) {
         disabled = false;
       }
     } else if (questions.length === 1) {
@@ -789,12 +789,13 @@ export default function Estimate() {
                 </Typography>
               </Grid>
               <Grid item container>
-                {question.options.map(option => (
+                {question.options.map((option, index) => (
                   <Grid
                     item
                     container
                     direction="column"
                     md
+                    key={index}
                     component={Button}
                     onClick={() => handleSelect(option.id)}
                     style={{
@@ -950,13 +951,18 @@ export default function Estimate() {
                   className={classes.message}
                   multiline
                   fullWidth
+                  placeholder="Tell us more about your project"
                   rows={10}
                   id="message"
                   onChange={event => setMessage(event.target.value)}
                 />
               </Grid>
               <Grid item align={matchesSM ? 'center' : undefined}>
-                <Typography variant="body1" paragraph>
+                <Typography
+                  variant="body1"
+                  paragraph
+                  style={{ lineHeight: 1.25 }}
+                >
                   We can create this digital solution for an estimated{' '}
                   <span className={classes.specialText}>
                     ${total.toFixed(2)}
@@ -983,7 +989,18 @@ export default function Estimate() {
                 </Grid>
               </Hidden>
               <Grid item>
-                <Button variant="contained" className={classes.estimateButton}>
+                <Button
+                  variant="contained"
+                  className={classes.estimateButton}
+                  disabled={
+                    name.length === 0 ||
+                    message.length === 0 ||
+                    email.length === 0 ||
+                    phone.length === 0 ||
+                    phoneHelper.length !== 0 ||
+                    emailHelper.length !== 0
+                  }
+                >
                   Place Request
                   <img
                     src={send}
